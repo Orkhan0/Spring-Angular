@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @ApiModel(value = "User Data Transfer Object")
 public class UserDto {
-    @ApiModelProperty(value = "User ID")
+    @ApiModelProperty(required = true,value = "ID")
     private Long id;
-    @ApiModelProperty(required = true, value = "Name and Surname of User")
+    @ApiModelProperty(required = true,value = "Name Surname")
     private String nameSurname;
+    @ApiModelProperty(required = true,value = "E-Mail")
+    private String email;
 }

@@ -7,7 +7,7 @@ import {AppLayoutComponent} from "./_layout";
 
 const routes: Routes = [
   {
-    path: "", component: AppLayoutComponent,
+    path: '', component: AppLayoutComponent,
     children: [
       {path: 'issue', component: IssueComponent},
       {path: 'dashboard', component: DashboardComponent},

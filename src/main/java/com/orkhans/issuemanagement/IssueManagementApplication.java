@@ -24,10 +24,10 @@ public class IssueManagementApplication {
 		return new ModelMapper();
 	}
 
-	@Bean
-	public Jackson2RepositoryPopulatorFactoryBean repositoryPopulatorFactoryBean(){
-		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-		factory.setResources(new Resource[]{new ClassPathResource("projects.json")});
-		return factory;
-	}
+//	@Bean
+//	public Jackson2RepositoryPopulatorFactoryBean repositoryPopulatorFactoryBean(){
+//		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
+//		factory.setResources(new Resource[]{new ClassPathResource("projects.json")});
+//		return factory;
+//	}
 }

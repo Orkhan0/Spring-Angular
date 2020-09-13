@@ -17,5 +17,5 @@ public interface IssueService {
 
     Boolean delete(Long issue);
 
-    IssueDto update(Long id, IssueDto issue);
+    IssueDto update(Long id, IssueDto project);
 }

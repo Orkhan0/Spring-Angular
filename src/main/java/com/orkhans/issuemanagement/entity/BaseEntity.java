@@ -1,6 +1,7 @@
 package com.orkhans.issuemanagement.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -9,7 +10,8 @@ import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
@@ -29,5 +31,4 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "status")
     private Boolean status;
-
 }

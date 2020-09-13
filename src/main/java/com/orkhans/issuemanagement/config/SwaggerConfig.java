@@ -1,5 +1,6 @@
 package com.orkhans.issuemanagement.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -17,18 +18,19 @@ import java.util.ArrayList;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    ApiInfo apiInfo(){
+    ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Issue Management API Reference")
                 .version("1.0.0")
                 .build();
     }
 
-    public Docket customImplementation(){
+    @Bean
+    public Docket customImplementation() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select().paths(PathSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.orkhans"))
+                .apis(RequestHandlerSelectors.basePackage("com.temelt"))
                 .build()
                 .pathMapping("/")
                 .useDefaultResponseMessages(false)

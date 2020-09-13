@@ -1,7 +1,7 @@
 package com.orkhans.issuemanagement.api;
 
 import com.orkhans.issuemanagement.dto.ProjectDto;
-import com.orkhans.issuemanagement.service.impl.ProjectServiceImp;
+import com.orkhans.issuemanagement.service.impl.ProjectServiceImpl;
 import com.orkhans.issuemanagement.util.ApiPaths;
 import com.orkhans.issuemanagement.util.TPage;
 import io.swagger.annotations.Api;
@@ -12,16 +12,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
-@RequestMapping(ApiPaths.PorjectCtrl.CTRL)
-@Api(value = ApiPaths.PorjectCtrl.CTRL, description = "Project APIs")
+@RequestMapping(ApiPaths.ProjectCtrl.CTRL)
+@Api(value = ApiPaths.ProjectCtrl.CTRL, description = "Project APIs")
 @Slf4j
+@CrossOrigin
 public class ProjectController {
 
-    private final ProjectServiceImp projectServiceImpl;
+    private final ProjectServiceImpl projectServiceImpl;
 
-    public ProjectController(ProjectServiceImp projectServiceImpl) {
+    public ProjectController(ProjectServiceImpl projectServiceImpl) {
         this.projectServiceImpl = projectServiceImpl;
     }
 
@@ -32,11 +34,18 @@ public class ProjectController {
         return ResponseEntity.ok(data);
     }
 
+    @GetMapping()
+    @ApiOperation(value = "Get All Operation", response = ProjectDto.class , responseContainer = "List")
+    public ResponseEntity<List<ProjectDto>> getAll() {
+        List<ProjectDto> data = projectServiceImpl.getAll();
+        return ResponseEntity.ok(data);
+    }
+
     @GetMapping("/{id}")
     @ApiOperation(value = "Get By Id Operation", response = ProjectDto.class)
     public ResponseEntity<ProjectDto> getById(@PathVariable(value = "id", required = true) Long id) {
-        log.info("ProjectController-> GetByID");
-        log.debug("ProjectController-> GetByID -> PARAM:"+id);
+        log.info("ProjectController-> GetByID ");
+        log.debug("ProjectController-> GetByID -> PARAM:" + id);
         ProjectDto projectDto = projectServiceImpl.getById(id);
         return ResponseEntity.ok(projectDto);
     }

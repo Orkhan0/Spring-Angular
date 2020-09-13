@@ -1,7 +1,7 @@
 package com.orkhans.issuemanagement.api;
 
 import com.orkhans.issuemanagement.dto.ProjectDto;
-import com.orkhans.issuemanagement.service.impl.ProjectServiceImp;
+import com.orkhans.issuemanagement.service.impl.ProjectServiceImpl;
 import com.orkhans.issuemanagement.util.ApiPaths;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/versioning")
-@Api(value = ApiPaths.PorjectCtrl.CTRL, description = "Project APIs")
+@Api(value = ApiPaths.ProjectCtrl.CTRL, description = "Project APIs")
+@CrossOrigin
 public class ProjectVersionApi {
+
     @Autowired
-    private ProjectServiceImp projectServiceImpl;
+    private ProjectServiceImpl projectServiceImpl;
 
     @GetMapping(value = "/{id}", params = "version=1")
     @ApiOperation(value = "Get By Id Operation V1", response = ProjectDto.class)
@@ -29,4 +31,5 @@ public class ProjectVersionApi {
         ProjectDto projectDto = projectServiceImpl.getById(id);
         return ResponseEntity.ok(projectDto);
     }
+
 }

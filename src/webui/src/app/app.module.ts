@@ -25,7 +25,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     AppLayoutComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
