@@ -1,7 +1,8 @@
 package com.orkhans.issuemanagement.service;
 
+import com.orkhans.issuemanagement.dto.ProjectDto;
 import com.orkhans.issuemanagement.entity.Project;
-import com.orkhans.issuemanagement.entity.User;
+import com.orkhans.issuemanagement.util.TPage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,16 +10,17 @@ import java.util.List;
 
 public interface ProjectService {
 
-    Project save(Project project);
+    ProjectDto save(ProjectDto project);
 
-    Project getById(Long id);
+    ProjectDto getById(Long id);
 
-    List<Project> getByProjectCode(String projectCode);
+    Project getByProjectCode(String projectCode);
 
     List<Project> getByProjectCodeContains(String projectCode);
 
-    Page<Project> getAllPageable(Pageable pageable);
+    TPage<ProjectDto> getAllPageable(Pageable pageable);
 
     Boolean delete(Project project);
 
+    ProjectDto update(Long id, ProjectDto project);
 }

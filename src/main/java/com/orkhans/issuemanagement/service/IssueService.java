@@ -1,6 +1,7 @@
 package com.orkhans.issuemanagement.service;
 
 import com.orkhans.issuemanagement.dto.IssueDto;
+import com.orkhans.issuemanagement.entity.Issue;
 import com.orkhans.issuemanagement.util.TPage;
 import lombok.Data;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ public interface IssueService {
 
     TPage<IssueDto> getAllPageable(Pageable pageable);
 
-    Boolean delete(IssueDto issue);
+    Boolean delete(Long issue);
 
+    IssueDto update(Long id, IssueDto issue);
 }

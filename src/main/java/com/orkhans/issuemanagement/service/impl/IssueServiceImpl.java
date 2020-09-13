@@ -41,15 +41,21 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public TPage<IssueDto> getAllPageable(Pageable pageable) {
-       Page<Issue> data = issueRepository.findAll(pageable);
-       TPage page = new TPage<IssueDto>();
-       IssueDto[] dtos = modelMapper.map(data.getContent(), IssueDto[].class);
-       page.setStat(data, Arrays.asList(dtos));
-       return page;
+        Page<Issue> data = issueRepository.findAll(pageable);
+        TPage page = new TPage<IssueDto>();
+        IssueDto[] dtos = modelMapper.map(data.getContent(), IssueDto[].class);
+        page.setStat(data, Arrays.asList(dtos));
+        return page;
     }
 
     @Override
-    public Boolean delete(IssueDto issue) {
+    public Boolean delete(Long issueId) {
+        issueRepository.deleteById(issueId);
+        return true;
+    }
+
+    @Override
+    public IssueDto update(Long id, IssueDto issue) {
         return null;
     }
 }

@@ -28,6 +28,6 @@ public abstract class BaseEntity implements Serializable {
     private String updatedBy;
 
     @Column(name = "status")
-    private boolean status;
+    private Boolean status;
 
 }
