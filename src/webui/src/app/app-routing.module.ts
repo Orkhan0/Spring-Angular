@@ -5,14 +5,28 @@ import {ProjectComponent} from './pages/project/project.component';
 import {IssueComponent} from "./pages/issue/issue.component";
 import {AppLayoutComponent} from "./_layout";
 
+// const routes: Routes = [
+//   {
+//     path: '', component: AppLayoutComponent,
+//     children: [
+//       {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
+//       {path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardModule'},
+//       {path: 'issue', loadChildren: './pages/issue/issue.module#IssueModule'},
+//       {path: 'project', loadChildren: './pages/project/project.module#ProjectModule'}
+//     ]
+//   },
+//   {
+//     path: '**', component: NotfoundComponent
+//   }
+
 const routes: Routes = [
   {
     path: '', component: AppLayoutComponent,
     children: [
-      {path: 'issue', component: IssueComponent},
+      {path: '', pathMatch: 'full', redirectTo: '/dashboard'},
       {path: 'dashboard', component: DashboardComponent},
+      {path: 'issue', component: IssueComponent},
       {path: 'project', component: ProjectComponent},
-      {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]
   }
 ];
@@ -23,7 +37,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
-
 
 // import { NgModule } from '@angular/core';
 // import { Routes, RouterModule } from '@angular/router';
@@ -43,4 +56,3 @@ export class AppRoutingModule {
 //   exports: [RouterModule]
 // })
 // export class AppRoutingModule { }
-

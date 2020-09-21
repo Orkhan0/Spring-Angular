@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
@@ -12,8 +12,12 @@ import {IssueModule} from "./pages/issue/issue.module";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BsDatepickerModule, BsDropdownModule, CollapseModule, ModalModule, PaginationModule} from "ngx-bootstrap";
-import {ToastNoAnimation, ToastNoAnimationModule, ToastrModule} from "ngx-toastr";
+import {ToastNoAnimationModule} from "ngx-toastr";
 import {ApiService} from "./services/api.service";
+import {ProjectService} from "./services/shared/project.service";
+import {IssueService} from "./services/shared/issue.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NotfoundComponent} from "./shared/notfound/notfound.component";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,9 +30,12 @@ export const createTranslateLoader = (http: HttpClient) => {
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     DashboardModule,
     ProjectModule,
@@ -52,7 +59,12 @@ export const createTranslateLoader = (http: HttpClient) => {
       }
     })
   ],
-  providers: [ApiService],
+
+  providers: [
+    ApiService,
+    ProjectService,
+    IssueService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
