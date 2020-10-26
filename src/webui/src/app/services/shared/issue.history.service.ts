@@ -6,39 +6,15 @@ import {map} from "rxjs/internal/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService{
+export class IssueHistoryService{
 
-  private PROJECT_PATH = "/project";
+  private ISSUE_HISTORY_PATH = "/issue/history";
 
   constructor(private apiService: ApiService ){
   }
 
-  getAllPageable(page) : Observable<any>{
-    return this.apiService.get(this.PROJECT_PATH+'/pagination',page).pipe(map(
-      res =>{
-        if(res){
-          return res;
-        }else{
-          return {};
-        }
-      }
-    ));
-  }
-
-  getAll() : Observable<any>{
-    return this.apiService.get(this.PROJECT_PATH).pipe(map(
-      res =>{
-        if(res){
-          return res;
-        }else{
-          return {};
-        }
-      }
-    ));
-  }
-
-  getById(id) : Observable<any>{
-    return this.apiService.get(this.PROJECT_PATH,id).pipe(map(
+  getAll(page) : Observable<any>{
+    return this.apiService.get(this.ISSUE_HISTORY_PATH+'/pagination',page).pipe(map(
       res =>{
         if(res){
           return res;
@@ -50,8 +26,21 @@ export class ProjectService{
     ));
   }
 
-  createProject(project) : Observable<any>{
-    return this.apiService.post(this.PROJECT_PATH,project).pipe(map(
+  getById(id) : Observable<any>{
+    return this.apiService.get(this.ISSUE_HISTORY_PATH,id).pipe(map(
+      res =>{
+        if(res){
+          return res;
+        }else{
+          console.log(res);
+          return {};
+        }
+      }
+    ));
+  }
+
+  createUser(user) : Observable<any>{
+    return this.apiService.post(this.ISSUE_HISTORY_PATH ,user).pipe(map(
       res =>{
         if(res){
           return res;
@@ -64,7 +53,7 @@ export class ProjectService{
   }
 
   delete(id) : Observable<any>{
-    return this.apiService.delete(this.PROJECT_PATH +'/'+id).pipe(map(
+    return this.apiService.delete(this.ISSUE_HISTORY_PATH,id).pipe(map(
       res =>{
         if(res){
           return res;

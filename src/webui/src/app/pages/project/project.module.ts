@@ -14,6 +14,6 @@ import {SharedModule} from "../../shared/shared.module";
     ProjectRoutingModule,
     SharedModule
   ],
-  providers: [ProjectService]
+  // providers: [ProjectService]
 })
 export class ProjectModule { }

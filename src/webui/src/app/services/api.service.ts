@@ -1,13 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpHeaders, HttpClient, HttpParams,} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {catchError} from 'rxjs/operators/catchError';
-import 'rxjs/add/observable/of';
-import {environment} from "../../environments/environment"
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient, HttpParams, } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { catchError } from 'rxjs/operators/catchError';
+import {environment} from "../../environments/environment";
+
+@Injectable()
 export class ApiService {
 
   constructor(private http: HttpClient) {
@@ -38,5 +37,4 @@ export class ApiService {
   private formatError(error: any) {
     return Observable.of(environment.API_BASE_PATH + error.error);
   }
-
 }

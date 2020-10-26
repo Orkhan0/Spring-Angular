@@ -1,5 +1,7 @@
 <div class="content-wrapper">
-  <h3>{{ 'Project List' | translate }}</h3>
+
+  <h3> {{ 'Project List' | translate }} </h3>
+
   <ngx-datatable
     class="bootstrap"
     [rows]="rows"
@@ -14,6 +16,10 @@
     [limit]="page.size"
     (page)='setPage($event)'>
   </ngx-datatable>
+
+  <ng-template #tplProjectDeleteCell let-row="row" let-value="value">
+    <button (click)="showProjectDeleteConfirmation(value)"><i class="material-icons">delete</i></button>
+  </ng-template>
 
   <div >
     <button type="button" class="btn btn-primary" (click)="openModal(template)">{{'New' | translate}}</button>
@@ -50,16 +56,16 @@
           </div>
         </div>
 
-<!--        <div class="form-group">-->
-<!--          <label>{{'Project Manager'| translate}}</label>-->
+        <div class="form-group">
+          <label>{{'Project Manager'| translate}}</label>
 
-<!--          <select formControlName="managerId" class="form-control" [ngClass]="{ 'is-invalid': f.managerId.errors }" >-->
-<!--            <option *ngFor="let val of managerOptions" [value]="val.id">{{val.nameSurname}}</option>-->
-<!--          </select>-->
-<!--          <div *ngIf="f.managerId.errors" class="invalid-feedback">-->
-<!--            <div *ngIf="f.managerId.errors.required">{{'Project Manager is required'| translate}}</div>-->
-<!--          </div>-->
-<!--        </div>-->
+          <select formControlName="managerId" class="form-control" [ngClass]="{ 'is-invalid': f.managerId.errors }" >
+            <option *ngFor="let val of managerOptions" [value]="val.id">{{val.nameSurname}}</option>
+          </select>
+          <div *ngIf="f.managerId.errors" class="invalid-feedback">
+            <div *ngIf="f.managerId.errors.required">{{'Project Manager is required'| translate}}</div>
+          </div>
+        </div>
 
         <div class="modal-footer" >
           <button class="btn btn-light" (click)="closeAndResetModal()">{{ 'Close' | translate }}</button>

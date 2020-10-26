@@ -4,13 +4,13 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class User extends BaseEntity {
 
     @Id

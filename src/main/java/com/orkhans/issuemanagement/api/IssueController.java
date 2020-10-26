@@ -43,6 +43,13 @@ public class IssueController {
         return ResponseEntity.ok(issue);
     }
 
+    @GetMapping("/detail/{id}")
+    @ApiOperation(value = "Get By Id Operation", response = IssueDto.class)
+    public ResponseEntity<IssueDetailDto> getByIdWithDetails(@PathVariable(value = "id", required = true) Long id) {
+        IssueDetailDto detailDto = issueServiceImpl.getByIdWithDetails(id);
+        return ResponseEntity.ok(detailDto);
+    }
+
     @PostMapping
     @ApiOperation(value = "Create Operation", response = IssueDto.class)
     public ResponseEntity<IssueDto> createIssue(@Valid @RequestBody IssueDto issue) {

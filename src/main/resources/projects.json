@@ -10,8 +10,16 @@
     "projectName": "ERP Project for Sales"
   },
   {
-    "_class": "com.orkhans.issuemanagement.entity.Project",
-    "projectCode": "CRM-S",
-    "projectName": "CRM Project for Sales"
+    "_class": "com.orkhans.issuemanagement.entity.User",
+    "username" : "temelt",
+    "nameSurname": "Taner TEMEL",
+    "email":"taner.temelt@gmail.com"
+  }
+  ,
+  {
+    "_class": "com.orkhans.issuemanagement.entity.User",
+    "username" : "jdoe",
+    "nameSurname": "John Doe",
+    "email":"jdoe@gmail.com"
   }
 ]

@@ -4,9 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "project")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Project extends BaseEntity {

@@ -18,6 +18,8 @@ import {ProjectService} from "./services/shared/project.service";
 import {IssueService} from "./services/shared/issue.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NotfoundComponent} from "./shared/notfound/notfound.component";
+import {UserService} from "./services/shared/user.service";
+import {IssueHistoryService} from "./services/shared/issue.history.service";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,7 +65,9 @@ export const createTranslateLoader = (http: HttpClient) => {
   providers: [
     ApiService,
     ProjectService,
-    IssueService
+    IssueService,
+    UserService,
+    IssueHistoryService
   ],
   bootstrap: [AppComponent]
 })

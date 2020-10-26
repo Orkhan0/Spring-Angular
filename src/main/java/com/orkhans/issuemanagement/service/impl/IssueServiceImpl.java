@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -32,12 +33,12 @@ public class IssueServiceImpl implements IssueService {
     private final IssueHistoryService issueHistoryService;
     private final ModelMapper modelMapper;
 
-    public IssueServiceImpl(IssueRepository issueRepository,ProjectRepository projectRepository, UserRepository userRepository, IssueHistoryService issueHistoryService, ModelMapper modelMapper) {
+    public IssueServiceImpl(IssueRepository issueRepository, ProjectRepository projectRepository, UserRepository userRepository, IssueHistoryService issueHistoryService, ModelMapper modelMapper) {
         this.issueRepository = issueRepository;
         this.modelMapper = modelMapper;
         this.issueHistoryService = issueHistoryService;
-        this.userRepository =userRepository;
-        this.projectRepository=projectRepository;
+        this.userRepository = userRepository;
+        this.projectRepository = projectRepository;
     }
 
     @Override
@@ -58,7 +59,7 @@ public class IssueServiceImpl implements IssueService {
     public IssueDetailDto update(Long id, IssueUpdateDto issue) {
         Issue issueDb = issueRepository.getOne(id);
         User user = userRepository.getOne(issue.getAssignee_id());
-        issueHistoryService.addHistory(id,issueDb);
+        issueHistoryService.addHistory(id, issueDb);
 
         issueDb.setAssignee(user);
         issueDb.setDate(issue.getDate());
