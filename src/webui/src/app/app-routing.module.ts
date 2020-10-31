@@ -5,6 +5,9 @@ import {ProjectComponent} from './pages/project/project.component';
 import {IssueComponent} from "./pages/issue/issue.component";
 import {AppLayoutComponent} from "./_layout";
 import {NotfoundComponent} from "./shared/notfound/notfound.component";
+import {AuthGuard} from "./security/auth.guard";
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 
 // const routes: Routes = [
 //   {
@@ -16,13 +19,13 @@ import {NotfoundComponent} from "./shared/notfound/notfound.component";
 //       {path: 'project', loadChildren: './pages/project/project.module#ProjectModule'}
 //     ]
 //   },
-//   {
-//     path: '**', component: NotfoundComponent
-//   }
+//   {path: 'login', component: LoginComponent},
+//   {path: 'register', component: RegisterComponent},
+//   {path: '**', component: NotfoundComponent}
 
 const routes: Routes = [
   {
-    path: '', component: AppLayoutComponent,
+    path: '', component: AppLayoutComponent, canActivate: [AuthGuard],
     children: [
       {path: '', pathMatch: 'full', redirectTo: '/dashboard'},
       {path: 'dashboard', component: DashboardComponent},
@@ -30,9 +33,9 @@ const routes: Routes = [
       {path: 'project', component: ProjectComponent},
     ]
   },
-  {
-    path: '**', component: NotfoundComponent
-  }
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({

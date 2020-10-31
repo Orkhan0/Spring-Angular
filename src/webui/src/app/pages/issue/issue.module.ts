@@ -7,12 +7,12 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 
 @NgModule({
+  declarations: [IssueDetailComponent, IssueComponent],
   imports: [
     CommonModule,
     IssueRoutingModule,
     SharedModule,
     NgxDatatableModule
-  ],
-  declarations: [IssueComponent, IssueDetailComponent]
+  ]
 })
 export class IssueModule { }

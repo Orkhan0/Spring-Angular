@@ -1,12 +1,13 @@
 package com.orkhans.issuemanagement.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = {@Index(name = "idx_username", columnList = "uname")})
 @Getter
 @Setter
 @NoArgsConstructor
